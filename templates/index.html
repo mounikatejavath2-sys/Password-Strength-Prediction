@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Password Strength Prediction</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            width: 350px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        input {
+            width: 90%;
+            padding: 12px;
+            margin: 15px 0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .Weak { color: red; }
+        .Medium { color: orange; }
+        .Strong { color: green; }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Password Strength Prediction</h1>
+
+    <p>Enter a sample password</p>
+
+    <form action="/predict" method="post">
+
+        <input
+            type="password"
+            name="password"
+            placeholder="Enter password"
+            required
+        >
+
+        <button type="submit">Check Strength</button>
+
+    </form>
+
+    {% if strength %}
+        <div class="result {{ strength }}">
+            Strength: {{ strength }}
+        </div>
+    {% endif %}
+
+</div>
+
+</body>
+</html>
